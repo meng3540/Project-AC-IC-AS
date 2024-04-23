@@ -41,6 +41,7 @@ While we can divide each frame and run the functions on tiles of the frame, the 
 1.  Jetson Orin Nano was successfully configured.Following the instructions provided [here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro).
 2.  Jetson will prioritize Python 3.8 which is already installed, so we can force the jetson to use version 3.9. 
 3.  Install pip.
+   $ sudo apt install python3-pip	#python 3
 4.  Check for CuPy Library. And Install. 
 5.  Include CuPy code into existing python code to enable parallelizing of the program.
 6.  Testing: Add timer to calculate runtime per frame. If runtime is under 20 ms, the program is done running before the next frame is loaded (given a framerate of 50 fps), meaning we have achieved our goal.
