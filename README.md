@@ -41,14 +41,13 @@ While we can divide each frame and run the functions on tiles of the frame, the 
 1.  Jetson Orin Nano was successfully configured.Following the instructions provided [here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#intro).
 2.  Jetson will prioritize Python 3.8 which is already installed, so we can force the jetson to use version 3.9. 
 3.  Install pip.
-   $ sudo apt install python3-pip	#python 3
 4.  Check for CuPy Library. And Install. 
 5.  Include CuPy code into existing python code to enable parallelizing of the program.
 6.  Testing: Add timer to calculate runtime per frame. If runtime is under 20 ms, the program is done running before the next frame is loaded (given a framerate of 50 fps), meaning we have achieved our goal.
 
-![](blob:https://euangoddard.github.io/e11870b1-a7c7-4a92-9be1-a77ae980ee7f)
+$$runtime=\frac{time}{fps}=\frac{(1s)}{(50 fps)}=20 ms$$
 
-1.  If we cannot time just the frame we can implement a timer to check that the entire program runs within the 26 seconds of the total time of the video. If it is anything more that the original videos length then we know we are not running the lane detection in real time. 
+7.  If we cannot time just the frame we can implement a timer to check that the entire program runs within the 26 seconds of the total time of the video. If it is anything more that the original videos length then we know we are not running the lane detection in real time. 
 
 5.Problems Encountered
 ======================
@@ -59,11 +58,11 @@ While we can divide each frame and run the functions on tiles of the frame, the 
 6.Final Reflection & Learning Plan
 ==================================
 
-**Amelia:** I would like to learn more about how to use the terminal.
+***Amelia:*** I would like to learn more about how to use the terminal.
 
-**Ian:** I believe that we may need to implement Scipy and Cupy to parallelize the entire program. This will require a lot more work to rewrite some of the opencv code using Scipy to apply all the matrix functions in the correct order. Alternatively I believe that we may need to write the function again in C++ using opencv, which could help us implement the cuda kernels a little easier. 
+***Ian:*** I believe that we may need to implement SciPy *and* CuPy to parallelize the entire program. This will require a lot more work to rewrite some of the opencv code using Scipy to apply all the matrix functions in the correct order. Alternatively I believe that we may need to write the function again in C++ using opencv, which could help us implement the cuda kernels a little easier. 
 
- **Alex:** I would like to utilize the potential of AI model training for object detection that the Jetson Nano has to offer. Taking advantage of features like the accelerator's high-performance GPU architecture, optimized libraries, and unified memory, I believe that we can train AI models to detect objects like speed signs, enhancing autonomous driving technology.
+ ***Alex:*** I would like to utilize the potential of AI model training for object detection that the Jetson Nano has to offer. Taking advantage of features like the accelerator's high-performance GPU architecture, optimized libraries, and unified memory, I believe that we can train AI models to detect objects like speed signs, enhancing autonomous driving technology.
 
 We were able to run our original python program on the Jetson Nano, but not any implementation with CuPy. This led to us not being able to time its total duration, which we planned to do by measuring the full execution time and taking the average based on the number of frames. We wanted to adjust our original code such that it runs a function inside the loop and measures the time that this function takes to execute, giving us the execution time for one frame. After seeing the results we could have learned whether or not our implementation of an accelerator actually made our program more efficient by improving its execution speed.
 
@@ -71,8 +70,9 @@ After resolving our issues with CuPy and the Jetson Nano, our future goal is to 
 
 Overall we gained great insight on parallelizing capable programs using edge based accelerators like the NVIDIA Jetson Orin Nano, from its set up to running code on it. With more time to familiarize ourselves with the Jetson and CuPy, we could have been able to successfully perform our goal of parallelizing the image processing needed for lane detection. Even if we had the ability to run CuPy on the Jetson, we didn't have the chance to explore what we would need to change to the code for it to run with CuPy.
 
-7. References
-==============
+
+7.References
+============
 
 <https://docs.cupy.dev/en/v5.4.0/reference/ndimage.html#opencv-mode>
 
